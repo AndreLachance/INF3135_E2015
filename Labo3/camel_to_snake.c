@@ -18,9 +18,9 @@ int main() {
 		scanf("%s", entree);
 		printf("\n\n");
 		if (strcmp(entree, "q") !=0){
+			sortie[0] = '\0';
 			camelToSnake (sortie, entree);
 			printf("La chaine transformee est: %s", sortie);
-			sortie[0] = '\0';
 			printf("\n\n");
 		}
 	} while (strcmp(entree, "q") != 0);
@@ -30,11 +30,12 @@ int main() {
 
 void camelToSnake (char* sortie, char* entree){
 	unsigned i = 0;
-	unsigned j;
+	unsigned j = 0;
 	char* pointeur = entree;
-	for (j = 0; j < strlen(entree); j++){
+	while (j < strlen(entree)){
 		if (!isupper(pointeur[i])){
 			i++;
+			j++;
 		} else {
 			pointeur[i] = (char)tolower(pointeur[i]);
 			strncat(sortie, pointeur, i);
@@ -43,5 +44,5 @@ void camelToSnake (char* sortie, char* entree){
 			i = 0;
 		}
 	}
-	strncat(sortie, pointeur, i + 1);
+	strncat(sortie, pointeur, i);
 }
