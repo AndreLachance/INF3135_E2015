@@ -1,0 +1,5 @@
+Labo 3
+------
+
+Faire un programme qui demande la saisie d'un mot en camel case et qui affiche la transformation de celle-ci en snake case.
+Traiter seulement le cas d'une chaine comprenant seulement des lettres et qui est bien en camel case.
