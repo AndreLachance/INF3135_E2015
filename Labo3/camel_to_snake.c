@@ -31,18 +31,18 @@ int main() {
 void camelToSnake (char* sortie, char* entree){
 	unsigned i = 0;
 	unsigned j = 0;
-	char* pointeur = entree;
-	while (j < strlen(entree)){
-		if (!isupper(pointeur[i])){
+	unsigned longueur = strlen(entree);
+	while (j < longueur){
+		if (!isupper(entree[i])){
 			i++;
 			j++;
 		} else {
-			pointeur[i] = (char)tolower(pointeur[i]);
-			strncat(sortie, pointeur, i);
+			entree[i] = (char)tolower(entree[i]);
+			strncat(sortie, entree, i);
 			strcat(sortie, "_");
-			pointeur += i;
+			entree += i;
 			i = 0;
 		}
 	}
-	strncat(sortie, pointeur, i);
+	strncat(sortie, entree, i);
 }
