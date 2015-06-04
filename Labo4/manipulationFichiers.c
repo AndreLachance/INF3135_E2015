@@ -31,8 +31,8 @@ int main(int argc, char** argv)
 	afficherMenu();
 
 	do{
-		
-		commande = getchar();
+		printf("Entrez votre choix de commande:");
+		scanf("%c", &commande);
 		printf("\n");
 		
 		switch(commande){
@@ -69,7 +69,7 @@ int main(int argc, char** argv)
 		}
 	}while(commande != 'q' && commande != 'Q' );
 	
-		return 0;
+	return 0;
 }
 
 FILE* ouvrirFichier (char* adresseFichier, char* mode)
@@ -99,10 +99,9 @@ void afficherMenu()
 	printf("Veuillez entrer une lettre parmis les suivantes: \n");
 	printf("a: Copie le fichier entree dans le fichier sortie\n");
 	printf("s: permet d'ajouter des lignes de texte manuellement au fichier de sortie\n");
-	printf("r: recherche d'un mot dans le fichier d'entrée");
+	printf("r: recherche d'un mot dans le fichier d'entree\n");
 	printf("h: affiche le menu des commandes\n");
 	printf("q: Quitte le programme\n");
-	printf("Entrez votre lettre:");
 }
 
 void copieFichier(FILE* fichierEntree, FILE* fichierSortie)
@@ -119,7 +118,7 @@ void ajoutLigne(FILE* fichier)
 
 	printf("Veuillez entrer la ligne a ajouter:");
 
-	fgets(tampon, TAILLE_TAMPON, stdin);
+	scanf("%s", tampon);
 	fputs(tampon, fichier);
 
 	printf("\n");
@@ -133,7 +132,7 @@ void nombreMot(FILE* fichier)
 	unsigned nbOccurences= 0;
 
 	printf("Veuillez entrer le mot a rechercher:");
-	fgets(motRechercher, TAILLE_MOT_MAX, stdin);
+	scanf("%s", motRechercher);
 	printf("\n");
 
 	while (fgets(tampon, TAILLE_TAMPON, fichier) != NULL) {
