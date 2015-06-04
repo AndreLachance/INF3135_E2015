@@ -1,0 +1,16 @@
+Labo4
+-----
+
+Vous devez faire un programme de manipulation de fichier.
+
+Ce programme prend en paramètre l'adresse d'un fichier d'entrée suivie de l'adresse d'un fichier de sortie.
+
+Ensuite, le programme affiche un court message expliquant le fonctionnement du programme et un menu. L'utilisateur doit choisir une action parmit ce menu:
+
+a: Copie le fichier entree dans le fichier sortie
+s: permet d'ajouter des lignes de texte manuellement au fichier de sortie
+r: recherche d'un mot dans le fichier d'entrée
+h: affiche le menu des commandes
+q: Quitte le programme
+
+Utilisé des fonctions et n'oublié pas de gérer les erreurs.
