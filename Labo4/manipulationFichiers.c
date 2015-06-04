@@ -21,6 +21,7 @@ int main(int argc, char** argv)
 	FILE* fichierEntree;
 	FILE* fichierSortie;
 	char commande;
+	char tampon[TAILLE_TAMPON + 1];
 	
 	
 	verificationArguments(argc);
@@ -30,7 +31,8 @@ int main(int argc, char** argv)
 
 	do{
 		printf("Entrez votre choix de commande:\n");
-		scanf("%c%*c", &commande);
+		fgets(tampon, TAILLE_TAMPON, stdin);
+		commande = tampon[0];
 		switch(commande){
 			
 			case 'a' :
@@ -67,8 +69,7 @@ int main(int argc, char** argv)
 				printf("Entrée Invalide\n");
 				break;
 		}
-	}while(commande != 'q' && commande != 'Q' );
-	
+	}while(commande != 'q' && commande != 'Q');
 	return 0;
 }
 
