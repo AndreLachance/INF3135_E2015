@@ -64,13 +64,15 @@ int main(int argc, char** argv)
 			case 'h' :
 				afficherMenu();
 				break;
-			
+			case 'q':
+			case 'Q':
+				exit(0);
+				break;
 			default:  
 				printf("Entrée Invalide\n");
 				break;
 		}
 	}while(commande != 'q' && commande != 'Q');
-	return 0;
 }
 
 FILE* ouvrirFichier (char* adresseFichier, char* mode)
@@ -119,7 +121,7 @@ void ajoutLigne(FILE* fichier)
 
 	printf("Veuillez entrer la ligne a ajouter:");
 
-	scanf("%s", tampon);
+	fgets(tampon, TAILLE_TAMPON, stdin);
 	fputs(tampon, fichier);
 
 	printf("\n");
@@ -130,10 +132,13 @@ void nombreMot(FILE* fichier)
 	char tampon[TAILLE_TAMPON+1];
 	char motRechercher[TAILLE_MOT_MAX+1];
 	char* pointeurString;
-	unsigned nbOccurences= 0;
+	int nbOccurences= 0;
+	int longeurMot;
 
 	printf("Veuillez entrer le mot a rechercher:");
-	scanf("%s", motRechercher);
+	fgets(motRechercher, TAILLE_MOT_MAX, stdin);
+	longeurMot = strlen(motRechercher) - 1;
+	motRechercher[longeurMot] = '\0';
 	printf("\n");
 
 	while (fgets(tampon, TAILLE_TAMPON, fichier) != NULL) {
