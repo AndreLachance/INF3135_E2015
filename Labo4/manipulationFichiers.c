@@ -12,6 +12,8 @@ void afficherMenu();
 void copieFichier(FILE*, FILE*);
 void ajoutLigne(FILE*);
 void nombreMot(FILE*);
+void verificationArguments(int);
+
 
 int main(int argc, char** argv)
 {
@@ -20,21 +22,15 @@ int main(int argc, char** argv)
 	FILE* fichierSortie;
 	char commande;
 	
-	if (argc != 3) {
-		
-		fprintf(stderr, "Nombre invalide d'arguments!\n");
-		return 1;
-		
-	}
+	
+	verificationArguments(argc);
 	
 	printf("Bienvenue au programme de manipulation des fichiers\n");
 	afficherMenu();
 
 	do{
-		printf("Entrez votre choix de commande:");
-		scanf("%c", &commande);
-		printf("\n");
-		
+		printf("Entrez votre choix de commande:\n");
+		scanf("%c%*c", &commande);
 		switch(commande){
 			
 			case 'a' :
@@ -65,6 +61,10 @@ int main(int argc, char** argv)
 				
 			case 'h' :
 				afficherMenu();
+				break;
+			
+			default:  
+				printf("Entrée Invalide\n");
 				break;
 		}
 	}while(commande != 'q' && commande != 'Q' );
@@ -146,3 +146,13 @@ void nombreMot(FILE* fichier)
 	printf("IL y a %d %s dans le fichier\n", nbOccurences, motRechercher);
 }
 
+void verificationArguments(int argc){
+	
+	if (argc != 3) {
+		
+		fprintf(stderr, "Nombre invalide d'arguments!\n Utilisation selon le format suivant: ./nomExecutable <fichierSource.txt> <fichierSortie.txt> \n");
+		exit(1);
+		
+	}
+	
+}
