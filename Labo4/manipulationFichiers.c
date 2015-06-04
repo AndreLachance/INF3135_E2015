@@ -1,19 +1,24 @@
 #include "stdio.h"
 #include "string.h"
+#include "stdlib.h"
 #include "errno.h"
 
 #define TAILLE_TAMPON 255
 #define TAILLE_MOT_MAX 50
+
+FILE* ouvrirFichier (char*, char*);
+void fermerFichier (FILE*);
+void afficherMenu();
+void copieFichier(FILE*, FILE*);
+void ajoutLigne(FILE*);
+void nombreMot(FILE*);
 
 int main(int argc, char** argv)
 {
 	
 	FILE* fichierEntree;
 	FILE* fichierSortie;
-	char* tampon[TAILLE_TAMPON+1];
 	char commande;
-	char* motRechercher[TAILLE_MOT_MAX+1];
-	char* pointeurString;
 	
 	if (argc != 3) {
 		
@@ -21,73 +26,124 @@ int main(int argc, char** argv)
 		return 1;
 		
 	}
+	
+	printf("Bienvenue au programme de manipulation des fichiers\n");
+	afficherMenu();
+
+	do{
 		
-	fichierEntree = fopen(argv[1], "r");
-	if(fichierEntree == NULL) {
-		fprintf(stderr,"Erreur d'ouverture du fichier: %s\n", strerror(errno));
-		return 1;
-	}
+		commande = getchar();
+		printf("\n");
+		
+		switch(commande){
+			
+			case 'a' :
+				fichierEntree = ouvrirFichier (argv[1], "r");
+				fichierSortie = ouvrirFichier (argv[2], "w");
+
+				copieFichier(fichierEntree, fichierSortie);
+
+				fermerFichier (fichierEntree);
+				fermerFichier (fichierSortie);
+				break;
+			
+			case 's' :
+				fichierSortie = ouvrirFichier (argv[2], "a");
+
+				ajoutLigne(fichierSortie);
+
+				fermerFichier (fichierSortie);
+				break;
+				
+			case 'r' :
+				fichierEntree = ouvrirFichier (argv[1], "r");
+
+				nombreMot(fichierEntree);
+
+				fermerFichier (fichierEntree);
+				break;
+				
+			case 'h' :
+				afficherMenu();
+				break;
+		}
+	}while(commande != 'q' && commande != 'Q' );
 	
-	fichierSortie = fopen(argv[2], "w");
-	if(fichierSortie == NULL) {
+		return 0;
+}
+
+FILE* ouvrirFichier (char* adresseFichier, char* mode)
+{
+	FILE* fichier;
+
+	fichier = fopen(adresseFichier, mode);
+	if(fichier == NULL) {
 		fprintf(stderr,"Erreur d'ouverture du fichier: %s\n", strerror(errno));
-		return 1;
+		exit (1);
 	}
-	
-	printf("Bienvenue au programme de manipulation des fichiers\n Veuillez entrer une lettre parmis les suivantes: \n");
+
+	return fichier;
+}
+
+void fermerFichier (FILE* fichier)
+{
+	if(fclose(fichier) == EOF)
+	{
+		printf("Erreur de fermeture du fichier\n");
+		exit (1);
+	}
+}
+
+void afficherMenu()
+{
+	printf("Veuillez entrer une lettre parmis les suivantes: \n");
 	printf("a: Copie le fichier entree dans le fichier sortie\n");
 	printf("s: permet d'ajouter des lignes de texte manuellement au fichier de sortie\n");
 	printf("r: recherche d'un mot dans le fichier d'entrée");
 	printf("h: affiche le menu des commandes\n");
 	printf("q: Quitte le programme\n");
-	printf("Entrez votre lettre:\n");
+	printf("Entrez votre lettre:");
+}
 
-	do{
-		
-		commande = getchar();
-		
-		switch(commande){
-			
-			case 'a' :
-				break;
-			
-			case 's' :
-				break;
-				
-			case 'r' :
-				//lecture du mot rechercher
-				while (fgets(tampon, TAILLE_TAMPON, fichierEntree) != NULL) {
-				while (strstr(tampon, motRechercher) != NULL) {
-				pointeurString = strstr(tampon, motRechercher) + strlen(motRechercher);
-				nbOccurences++;
-				strcpy(tampon, pointeurString);
-				}
-			
-				break;
-				
-			case 'h' :
-				printf("a: Copie le fichier entree dans le fichier sortie\n");
-				printf("s: permet d'ajouter des lignes de texte manuellement au fichier de sortie\n");
-				printf("r: recherche d'un mot dans le fichier d'entrée");
-				printf("h: affiche le menu des commandes\n");
-				printf("q: Quitte le programme\n");
-				break;
+void copieFichier(FILE* fichierEntree, FILE* fichierSortie)
+{
+	char tampon[TAILLE_TAMPON+1];
+	while (fgets(tampon, TAILLE_TAMPON, fichierEntree) != NULL) {
+		fputs(tampon, fichierSortie);
+	}
+}
+
+void ajoutLigne(FILE* fichier)
+{
+	char tampon[TAILLE_TAMPON+1];
+
+	printf("Veuillez entrer la ligne a ajouter:");
+
+	fgets(tampon, TAILLE_TAMPON, stdin);
+	fputs(tampon, fichier);
+
+	printf("\n");
+}
+
+void nombreMot(FILE* fichier)
+{
+	char tampon[TAILLE_TAMPON+1];
+	char motRechercher[TAILLE_MOT_MAX+1];
+	char* pointeurString;
+	unsigned nbOccurences= 0;
+
+	printf("Veuillez entrer le mot a rechercher:");
+	fgets(motRechercher, TAILLE_MOT_MAX, stdin);
+	printf("\n");
+
+	while (fgets(tampon, TAILLE_TAMPON, fichier) != NULL) {
+		pointeurString = tampon;
+		while (strstr(pointeurString, motRechercher) != NULL) {
+			pointeurString = strstr(pointeurString, motRechercher) + strlen(motRechercher);
+			nbOccurences++;
 		}
-	}while(commande != 'q' && commande != 'Q' );
-	
-	
-	if(fclose(fichierEntree) == EOF)
-	{
-		printf("Erreur de fermeture du fichier d'entree\n");
-		return 1;
 	}
-	
-	if(fclose(fichierSortie) == EOF)
-	{
-		printf("Erreur de fermeture du fichier de sortie\n");
-		return 1;
-	}
-	
-		return 0;
+
+	printf("IL y a %d %s dans le fichier\n", nbOccurences, motRechercher);
 }
 
