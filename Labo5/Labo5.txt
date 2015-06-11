@@ -1,0 +1,20 @@
+Labo5
+-----
+
+Vous devez faire un programme de gestion d'inventaire d'un magasin de pneux.
+
+Vous devez implémenté deux modules.
+
+main.c
+inventaire.c
+
+Votre programme doit afficher un court message qui explique le progamme.
+
+Voici le menu principal.
+
+"Menu:"
+"a: afficher l'invertaire"
+"m: modifier l'invertaire"
+"q: quiter"
+
+Pour l'inventaire, votre programme doit aller chercher l'information dans un fichier "inventaire.txt" au démarage et écrase se même fichier lorsque l'on quite.
