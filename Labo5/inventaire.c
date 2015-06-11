@@ -81,3 +81,26 @@ void fermerFichier (FILE* fichier){
 void entreeInvalide(){
 	printf("Votre choix n'est pas valide.\nEntrez un autre choix:");
 }
+
+void modificationInventaire(INVENTAIRE inventaire){
+	int temp;
+	int* pneu;
+	
+	printf("Modification d'inventaire.\n");
+	pneu = inventaireSelectionPneu (inventaire);
+	printf("Quantite actuel:%d\n", *pneu);
+	
+	do {
+		printf("Entrez la nouvelle quantite:");
+		scanf("%d", &temp);
+		printf("\n");
+		if (temp < 0){
+			printf("La quantite ne peut pas etre negatif\n");
+		}
+	} while (temp < 0);
+	
+	*pneu = temp;
+	printf("Quantite modifiee.\n");
+	
+	printf("\n");
+}

@@ -4,7 +4,7 @@
 
 void afficherMenu();
 
-void modificationInventaire(INVENTAIRE);
+
 
 int main (void){
 	int* inventaire[3];
@@ -47,28 +47,6 @@ int main (void){
 	return 0;
 }
 
-void modificationInventaire(INVENTAIRE inventaire){
-	int temp;
-	int* pneu;
-	
-	printf("Modification d'inventaire.\n");
-	pneu = inventaireSelectionPneu (inventaire);
-	printf("Quantite actuel:%d\n", *pneu);
-	
-	do {
-		printf("Entrez la nouvelle quantite:");
-		scanf("%d", &temp);
-		printf("\n");
-		if (temp < 0){
-			printf("La quantite ne peut pas etre negatif\n");
-		}
-	} while (temp < 0);
-	
-	*pneu = temp;
-	printf("Quantite modifiee.\n");
-	
-	printf("\n");
-}
 
 void afficherMenu(){
 	printf("Menu:\n");

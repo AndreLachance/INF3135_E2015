@@ -11,4 +11,6 @@ int* inventaireSelectionPneu (INVENTAIRE);
 
 void inventaireSauvegarder (INVENTAIRE);
 
+void modificationInventaire(INVENTAIRE);
+
 #endif /* INVENTAIRE_H */
