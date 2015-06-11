@@ -7,6 +7,7 @@ Vous devez implémenté deux modules.
 
 main.c
 inventaire.c
+inventaire.h
 
 Votre programme doit afficher un court message qui explique le progamme.
 
@@ -16,5 +17,7 @@ Voici le menu principal.
 "a: afficher l'invertaire"
 "m: modifier l'invertaire"
 "q: quiter"
+
+Implémentez chaque option du menu.
 
 Pour l'inventaire, votre programme doit aller chercher l'information dans un fichier "inventaire.txt" au démarage et écrase se même fichier lorsque l'on quite.
