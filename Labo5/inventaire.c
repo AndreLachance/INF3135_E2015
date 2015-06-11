@@ -24,16 +24,19 @@ void inventaireAfficher (INVENTAIRE inventaire){
 int* inventaireSelectionPneu (INVENTAIRE inventaire){
 	int marque;
 	int taille;
+	char buffer[51];
 	printf("Entrez la marque de pneu:\n");
 	printf("0: Bridgerock\n");
 	printf("1: Micheline\n");
 	printf("2: Tokio\n");
 	printf("Choix:");
-	scanf("%d", &marque);
+	fgets(buffer, 50, stdin);
+	sscanf(buffer, "%d", &marque);
 	printf("\n");
 	while (marque < 0 || marque > 2){
 		entreeInvalide();
-		scanf("%d", &marque);
+		fgets(buffer, 50, stdin);
+		sscanf(buffer, "%d", &marque);
 		printf("\n");
 	}
 	printf("Entrez la taille de pneu:\n");
@@ -41,11 +44,13 @@ int* inventaireSelectionPneu (INVENTAIRE inventaire){
 	printf("1: 20 pouces\n");
 	printf("2: 22 pouces\n");
 	printf("Choix:");
-	scanf("%d", &taille);
+	fgets(buffer, 50, stdin);
+	sscanf(buffer, "%d", &taille);
 	printf("\n");
 	while (taille < 0 || taille > 2){
 		entreeInvalide();
-		scanf("%d", &taille);
+		fgets(buffer, 50, stdin);
+		sscanf(buffer, "%d", &taille);
 		printf("\n");
 	}
 	
