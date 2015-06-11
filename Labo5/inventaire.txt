@@ -1,12 +1,12 @@
 Bridgerock
 18 pouces: 5
-20 pouces: 7
+20 pouces: 12
 22 pouces: 4
 Micheline
 18 pouces: 6
 20 pouces: 5
-22 pouces: 0
+22 pouces: 4
 Tokio
-18 pouces: 4
-20 pouces: 8
-22 pouces: 30
+18 pouces: 13
+20 pouces: 0
+22 pouces: 13
