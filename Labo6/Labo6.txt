@@ -1,0 +1,11 @@
+Labo6
+-----
+
+1. Faire un makefile pour le progamme du Labo5, gestion d'inventaire de pneux.
+
+Vous devez:
+ -faire la compilation en deux étapes avec des fichiers objets;
+ -utilisé des variables pour le compilateur, les options et le nom de l'exécutable;
+ -faire une cible "clean" qui suprime l'exécutable et les fichiers objet.
+
+2. Faire la même chose avec le programme de manipulation de fichier mais en utilisant les sufixes.
