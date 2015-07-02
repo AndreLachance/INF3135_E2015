@@ -66,6 +66,7 @@ int chaineAjouteChar(Chaine ch, unsigned char n){
 	if (ch->tailleChaine + 1 == ch->tailleMax){
 		temp = (char *)realloc(ch->pTabChaine, sizeof(char) * (ch->tailleMax + INCREMENTATION_TAILLE));
 		if (temp == NULL){
+			printf("Erreur d'allocation de la mémoire: %s",strerror(errno));
 			return 0;
 		} else {
 			ch->pTabChaine = temp;
@@ -83,6 +84,7 @@ int chaineAjouteChaine(Chaine chaineInit, Chaine chaineAjoute){
 	if (chaineInit->tailleChaine + chaineAjoute->tailleChaine >= chaineInit->tailleMax){
 		temp = (char *)realloc(chaineInit->pTabChaine, sizeof(char) * (chaineInit->tailleMax + chaineAjoute->tailleChaine));
 		if (temp == NULL){
+			printf("Erreur d'allocation de la mémoire: %s",strerror(errno));
 			return 0;
 		} else {
 			chaineInit->pTabChaine = temp;
