@@ -1,0 +1,8 @@
+Labo7
+-----
+
+Implémenter les fonction du header chaine.h
+Faire un main.c qui utilise le module chaine.c pour le tester
+Faire un makefile du tout
+
+note: il ne faut pas oublier de toujours tester si l'allocation de mémoire à réussie.
