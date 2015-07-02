@@ -26,14 +26,16 @@ Chaine chaineCreeVide(void){
 		p->pTabChaine = (char*) malloc(sizeof(char) * TAILLE_INITIALE);
 		p->tailleChaine = 0;
 		p->tailleMax = TAILLE_INITIALE;
+		if(p->pTabChaine == NULL){
+			free(p);
+			p = NULL;
+			printf("Erreur d'allocation de la mémoire: %s",strerror(errno));
+		} else {
+			p->pTabChaine[0] = '\0';
+		}
 	} else {
-		printf("Erreur d'allocation de la mémoire: %s",strerror(errno));
-	}
-	if(p->pTabChaine == NULL){
-		free(p);
 		p = NULL;
-	} else {
-		p->pTabChaine[0] = '\0';
+		printf("Erreur d'allocation de la mémoire: %s",strerror(errno));
 	}
 	return p;
 }
