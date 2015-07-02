@@ -20,7 +20,7 @@ struct chaine{
 	unsigned tailleMax;
 };
 
-Chaine chaineCreeVide(void){
+Chaine chaineCreeVide(){
 	Chaine p = (Chaine) malloc(sizeof(struct chaine));
 	if (p != NULL){
 		p->pTabChaine = (char*) malloc(sizeof(char) * TAILLE_INITIALE);
