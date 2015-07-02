@@ -7,6 +7,8 @@ BLAP20118603
 
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
+#include <errno.h>
 #include "chaine.h"
 
 #define TAILLE_INITIALE 10
@@ -24,6 +26,8 @@ Chaine chaineCreeVide(void){
 		p->pTabChaine = (char*) malloc(sizeof(char) * TAILLE_INITIALE);
 		p->tailleChaine = 0;
 		p->tailleMax = TAILLE_INITIALE;
+	} else {
+		printf("Erreur d'allocation de la mémoire: %s",strerror(errno));
 	}
 	if(p->pTabChaine == NULL){
 		free(p);
