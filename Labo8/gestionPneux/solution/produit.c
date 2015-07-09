@@ -5,6 +5,7 @@ Patrick Blanchette
 */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include "chaine.h"
 #include "produit.h"

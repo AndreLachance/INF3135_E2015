@@ -53,9 +53,8 @@ int main (void){
 			
 		}
 	}while(entree[0] != 'n' && entree[0] != 'N');
-
-	while (!pileProduitEstVide(inventaire)){
-		printf("On est la\n");
+	
+	while (pileProduitEstVide(inventaire) != 0){
 		pr = pileProduitDepiler(inventaire);
 		produitAfficher(pr);
 	}
