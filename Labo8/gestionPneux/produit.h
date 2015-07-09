@@ -80,4 +80,10 @@ void produitModifierQuantite(Produit, unsigned);
 */
 void produitSupprimme(Produit);
 
+/* produitAfficher :
+	affiche les information sur le produit
+	pr doit etre un pointeur non NULL vers une chaine creee par produitCreeVide.
+*/
+void produitAfficher(Produit);
+
 #endif /* PRODUIT_H */
