@@ -1,8 +1,6 @@
 #ifndef PILE_PRODUIT_H
 #	define PILE_PRODUI_H
 
-#include "produit.h"
-
 typedef struct pileProduit * PileProduit;
 
 /* pileProduitCreeVide :
