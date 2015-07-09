@@ -6,10 +6,10 @@ all: link
 
 compile: main.o chaine.o
 
-main.o: main.c chaine.h
+main.o: main.c
 	$(CC) $(OPTIONS) -c main.c
 
-chaine.o: chaine.c chaine.h
+chaine.o: chaine.c
 	$(CC) $(OPTIONS) -c chaine.c
 
 link: compile
