@@ -1,0 +1,11 @@
+Bienvenue au programme de manipulation des fichiers
+Veuillez entrer une lettre parmis les suivantes: 
+a: Copie le fichier entree dans le fichier sortie
+s: permet d'ajouter des lignes de texte manuellement au fichier de sortie
+r: recherche d'un mot dans le fichier d'entree
+h: affiche le menu des commandes
+q: Quitte le programme
+Entrez votre choix de commande:
+Veuillez entrer le mot a rechercher:
+IL y a 0 motextremementlongpourrien dans le fichier
+Entrez votre choix de commande:
